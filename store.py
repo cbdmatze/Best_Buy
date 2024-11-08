@@ -22,4 +22,13 @@ class Store:
         # Return a list from all active products in the store
         return [product for product in self.products if product.is_active()]
     
-    
+    def order(self, shopping_list):
+        # Process the order from a list of tuples (product, quantity)
+        total_price = 0
+        for product, quantity in shopping_list:
+            try:
+                # Try buying the given quantity of the product
+                total_price += product.buy(quantity)
+            except Exception as e:
+                print(f"Error with product {product.name}: {e}")
+        return total_price
