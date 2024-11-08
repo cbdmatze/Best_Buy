@@ -2,20 +2,27 @@ from products import Product
 
 def main():
     # Create a new product
-    macbook = Product("MacBook Air M2", 1450, 100)
+    macbook = Product("MacBook Air M2", price=1450, quantity=100)
+    bose = Product("Bose Quietcomfort Earbuds", price=250, quantity=50)
 
     # Display product information
     print(macbook.show())
 
     # Try buying 5 Macbook
     try:
-        total_price = macbook.buy(5)
-        print(f"Total price for 5 MacBook: {total_price}")
+        macbook_purchase_quantity = 5
+        total_purchase_price_macbook = macbook.buy(macbook_purchase_quantity)
+        print(f"Total price for {macbook_purchase_quantity} MacBook: {total_purchase_price_macbook}")
+
+        bose_purchase_quantity = 2
+        total_purchase_price_bose = bose.buy(bose_purchase_quantity)
+        print(f"Total price for {bose_purchase_quantity} Bose Earbuds: {total_purchase_price_bose}")
     except Exception as e:
         print(f"Error: {e}")
     
     # Display updated product information after purchase
     print(macbook.show())
+    print(bose.show())
 
     # Check if the product is still active
     print(f"Is the product active? {macbook.is_active()}")
