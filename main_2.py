@@ -1,12 +1,12 @@
-from products import Product
+from products import Products
 from store import Store
 
 def main():
     # Initialize a few products
 
-    macbook_air_m2 = Product("MacBook Air M2", price=1450, quantity=100)
-    bose_quietcomfort_earbuds = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
-    google_pixel_7 = Product("Google Pixel 7", price=500, quantity=250)
+    macbook_air_m2 = Products("MacBook Air M2", price=1450, quantity=100)
+    bose_quietcomfort_earbuds = Products("Bose QuietComfort Earbuds", price=250, quantity=500)
+    google_pixel_7 = Products("Google Pixel 7", price=500, quantity=250)
 
     # Create a list of products
     product_list = [macbook_air_m2, bose_quietcomfort_earbuds, google_pixel_7]

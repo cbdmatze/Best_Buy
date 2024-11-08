@@ -1,4 +1,4 @@
-class Product:
+class Products:
     
     def __init__(self, name: str, price: float, quantity: int):
         """

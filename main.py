@@ -1,9 +1,9 @@
-from products import Product
+from products import Products
 
 def main():
     # Create a new product
-    macbook = Product("MacBook Air M2", price=1450, quantity=100)
-    bose = Product("Bose Quietcomfort Earbuds", price=250, quantity=50)
+    macbook = Products("MacBook Air M2", price=1450, quantity=100)
+    bose = Products("Bose Quietcomfort Earbuds", price=250, quantity=50)
 
     # Display product information
     print(macbook.show())
