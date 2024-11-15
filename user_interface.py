@@ -63,7 +63,6 @@ def show_total_quantity(store: Store) -> None:
     total_quantity = store.get_total_quantity()
     print(f"\nTotal quantity of items in store: {total_quantity}")
 
-
 def make_order(store: Store) -> None:
     """
     Allow the user to make an order by selecting products and quantities.
@@ -107,10 +106,13 @@ def make_order(store: Store) -> None:
 
     # If there are items in the shopping list, proceed with the order
     if shopping_list:
-        try:
-            total_price = store.order(shopping_list)  # Process the order
-            print(f"Order placed successfully! Total price: {total_price} dollars")
-        except Exception as e:
-            print(f"Error processing order: {e}")
-    else:
-        print("No items were ordered.")
+        if not ValueError:
+            try:
+                # Try to process the order
+                total_price = store.order(shopping_list)  
+                print(f"Order placed successfully! Total price: {total_price} dollars")  # Only print if the order succeeds
+            except Exception as e:
+                # If an exception occurs, print the error message
+                print(f"Error processing order: {e}")
+        else:
+            print("No items were ordered.")

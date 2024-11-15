@@ -121,7 +121,7 @@ class Products:
 
 
 # Class for Non-Stocked Products
-class NonStockedProducts(Products):
+class NonStockedProduct(Products):
     """
     A class for non-stocked-products (e.g., digital products like software licenses):
     These products always have a quantity of zero.
@@ -139,5 +139,21 @@ class NonStockedProducts(Products):
     
 
 # Class for Limited Products
-class LimitedProducts(Products):
+class LimitedProduct(Products):
+    """
+    A class for products that have a limit on how many can be purchased in a single order.
+    For example shipping fee can only be added once.
+    """
+    def __init__(self, name, price, quantity, maximum):
+        super().__init__(name, price, quantity)
+        self.maximum = maximum # Maximum allowed to purchase in a single order
+    
+    def buy(self, quantity):
+        """Override the buy method to enforce a maximum purchase limit."""
+        if quantity > self.maximum:
+            raise ValueError(f"Cannot purchase more than {self.maximum} units of {self.name} in a single order.")
+    
+    def shwo(self):
+        """Return a string representation of the limited product."""
+        return f"{self.name} (Limited, Max: {self.maximum} per order, Price: {self.price}, Quantity: {self.quantity})"
     
