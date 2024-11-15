@@ -118,3 +118,26 @@ class Products:
         total_price = self.price * quantity
         self.set_quantity(self.quantity - quantity)  # Update the quantity after purchase
         return total_price
+
+
+# Class for Non-Stocked Products
+class NonStockedProducts(Products):
+    """
+    A class for non-stocked-products (e.g., digital products like software licenses):
+    These products always have a quantity of zero.
+    """
+    def __init__(self, name, price):
+        super().__init__(name, price, 0) # Quantity is always 0
+    
+    def set_quantity(self, quantity):
+        """Non-stocked products cannot have a quantity other than 0."""
+        raise ValueError("Non-stocked products cannot have a quantity.")
+    
+    def show(self):
+        """Return a string representation of the non-stocked product."""
+        return f"{self.name} (Non-Stocked), Price: {self.price}"
+    
+
+# Class for Limited Products
+class LimitedProducts(Products):
+    
