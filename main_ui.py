@@ -1,9 +1,10 @@
-from products import Products, NonStockedProduct, LimitedProduct  
+from products import Products, NonStockedProduct, LimitedProduct
 from store import Store
 from user_interface import start
+from promotions import PercentDiscount, SecondHalfPrice, ThirdOneFree
 
 
-def main() -> None:
+def main():
     """
     Main function to initialize products, set up store inventory, and start the user interface.
     """
@@ -12,19 +13,31 @@ def main() -> None:
     macbook_air_m2 = Products("MacBook Air M2", price=1450, quantity=100)
     bose_quietcomfort_earbuds = Products("Bose QuietComfort Earbuds", price=250, quantity=500)
     google_pixel_7 = Products("Google Pixel 7", price=500, quantity=250)
+    windows_license = NonStockedProduct("Windows License", price=125)
+    shipping = LimitedProduct("Shipping", price=10, quantity=250, maximum=1)
 
     # Set up initial stock of inventory
     product_list = [
         macbook_air_m2,
         bose_quietcomfort_earbuds,
         google_pixel_7,
-        NonStockedProduct("Windows License", price=125), 
-        LimitedProduct("Shipping", price=10, quantity=250, maximum=1)  
+        windows_license,
+        shipping
     ]
 
-    # Show the product details
+    # Create promotion catalog
+    second_half_price = SecondHalfPrice("Second Half price!")
+    third_one_free = ThirdOneFree("Third One Free!")
+    thirty_percent = PercentDiscount("30% off!", percent=30)
+
+    # Add promotions to products
+    product_list[0].set_promotion(second_half_price)  # MacBook Air M2
+    product_list[1].set_promotion(third_one_free)  # Bose QuietComfort Earbuds
+    product_list[3].set_promotion(thirty_percent)  # Windows License (Non-Stocked)
+
+    # Show the product details, including promotions
     for product in product_list:
-        print(product.show())  # Add parentheses to call the method
+        print(product.show())
 
     # Create the store with the product list
     best_buy = Store(product_list)

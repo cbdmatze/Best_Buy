@@ -106,13 +106,12 @@ def make_order(store: Store) -> None:
 
     # If there are items in the shopping list, proceed with the order
     if shopping_list:
-        if not ValueError:
-            try:
-                # Try to process the order
-                total_price = store.order(shopping_list)  
-                print(f"Order placed successfully! Total price: {total_price} dollars")  # Only print if the order succeeds
-            except Exception as e:
-                # If an exception occurs, print the error message
-                print(f"Error processing order: {e}")
-        else:
-            print("No items were ordered.")
+        try:
+            # Try to process the order
+            total_price = store.order(shopping_list)  
+            print(f"Order placed successfully! Total price: {total_price} dollars")  # Only print if the order succeeds
+        except Exception as e:
+            # If an exception occurs, print the error message
+            print(f"Error processing order: {e}")
+    else:
+        print("No items were ordered.")
