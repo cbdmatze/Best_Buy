@@ -1,5 +1,5 @@
-from products import Products, NonStockedProduct, LimitedProduct
-from store import Store
+from products_2 import Products, NonStockedProduct, LimitedProduct
+from store_2 import Store
 from user_interface import start
 from promotions import PercentDiscount, SecondHalfPrice, ThirdOneFree
 

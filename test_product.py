@@ -1,5 +1,5 @@
 import pytest
-from products import Products
+from products_2 import Products
 
 # Test 1: Creating a valid product and assure everything works fine
 def test_create_product():

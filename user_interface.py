@@ -1,4 +1,4 @@
-from store import Store
+from store_2 import Store
 
 def start(store: Store) -> None:
     """
