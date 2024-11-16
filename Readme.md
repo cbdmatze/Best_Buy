@@ -35,7 +35,7 @@ Installation
 
 	1.	Clone the repository to your local machine:
 
-git clone https://github.com/your-username/best-buy-tech-store.git
+git clone https://github.com/your-username/Best_Buy.git
 cd best-buy-tech-store
 
 
