@@ -1,6 +1,6 @@
 from store_2 import Store
 
-def start(store: Store) -> None:
+def start(store):
     """
     Display the main menu for the store and handle user interaction.
 
@@ -33,7 +33,7 @@ def start(store: Store) -> None:
             print("*Invalid choice. Please select a valid option.*")
 
 
-def list_products(store: Store) -> None:
+def list_products(store):
     """
     Display a list of all active products in the store.
 
@@ -48,10 +48,10 @@ def list_products(store: Store) -> None:
     else:
         print("\nProducts available in store:")
         for product in products:
-            print(product.show())
+            print(product)  # This will use the __str__ method of the Products class
 
 
-def show_total_quantity(store: Store) -> None:
+def show_total_quantity(store):
     """
     Display the total quantity of all products in the store.
 
@@ -63,7 +63,7 @@ def show_total_quantity(store: Store) -> None:
     total_quantity = store.get_total_quantity()
     print(f"\nTotal quantity of items in store: {total_quantity}")
 
-def make_order(store: Store) -> None:
+def make_order(store):
     """
     Allow the user to make an order by selecting products and quantities.
 
@@ -82,7 +82,7 @@ def make_order(store: Store) -> None:
     # Display available products with numbers
     print("\nAvailable products:")
     for i, product in enumerate(products):
-        print(f"{i + 1}. {product.show()}")
+        print(f"{i + 1}. {product}")  # Use __str__ method to display product details
 
     # Loop to collect products and their quantities
     while True:
