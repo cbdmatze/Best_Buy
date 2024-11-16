@@ -1,7 +1,7 @@
 from products_2 import Products, NonStockedProduct, LimitedProduct
 from store_2 import Store
 from user_interface import start
-from promotions import PercentDiscount, SecondHalfPrice, ThirdOneFree
+from promotions import PercentDiscount, SecondHalfPricePromotion, ThirdOneFree
 
 def main():
     """
@@ -51,7 +51,7 @@ def main():
     print("\n--- Store Inventory with Promotions ---")
 
     # Create promotion catalog
-    second_half_price = SecondHalfPrice("Second Half Price!")
+    second_half_price = SecondHalfPricePromotion("Second Half Price!")
     third_one_free = ThirdOneFree("Third One Free!")
     thirty_percent = PercentDiscount("30% off!", percent=30)
 
