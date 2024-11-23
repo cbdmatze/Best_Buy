@@ -27,6 +27,7 @@ class Promotion(ABC):
         """
         self.name = name
 
+
     @abstractmethod
     def apply_promotion(self, product, quantity):
         """
@@ -78,6 +79,7 @@ class PercentDiscount(Promotion):
         super().__init__(name)
         self.percent = percent
 
+
     def apply_promotion(self, product, quantity):
         """
         Apply the percent discount to the total price.
@@ -123,6 +125,7 @@ class SecondHalfPricePromotion(Promotion):
             The name of the promotion (default is 'Second Half Price').
         """
         super().__init__(name)
+
 
     def apply_promotion(self, product, quantity):
         """
@@ -180,6 +183,7 @@ class ThirdOneFree(Promotion):
         """
         super().__init__(name)
 
+
     def apply_promotion(self, product, quantity):
         """
         Apply the 'Third One Free' promotion to the total price.
@@ -201,3 +205,4 @@ class ThirdOneFree(Promotion):
         """
         paid_quantity = quantity - (quantity // 3)
         return paid_quantity * product.price
+    

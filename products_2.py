@@ -1,5 +1,6 @@
 from promotions import Promotion
 
+
 class Products:
     """
     A class to represent a product in the store.
@@ -52,18 +53,22 @@ class Products:
         self.active = True
         self.promotion = None  # New promotion attribute
 
+
     def set_promotion(self, promotion):
         """Assign a promotion to the product."""
         self.promotion = promotion
+
 
     def get_promotion(self):
         """Return the current promotion applied to the product."""
         return self.promotion
 
+
     @property
     def quantity(self):
         """Property for quantity of the product."""
         return self._quantity
+
 
     @quantity.setter
     def quantity(self, quantity):
@@ -74,10 +79,12 @@ class Products:
         if self._quantity == 0:
             self.deactivate()
 
+
     @property
     def price(self):
         """Property for the price of the product."""
         return self._price
+
 
     @price.setter
     def price(self, price):
@@ -86,22 +93,27 @@ class Products:
             raise ValueError("Price cannot be negative.")
         self._price = price
 
+
     def is_active(self):
         """Return True if the product is active, otherwise False."""
         return self.active
+
 
     def activate(self):
         """Activate the product."""
         self.active = True
 
+
     def deactivate(self):
         """Deactivate the product."""
         self.active = False
+
 
     def __str__(self):
         """Return a string representation of the product's details."""
         promo_info = f" (Promotion: {self.promotion.name})" if self.promotion else ""
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}{promo_info}"
+
 
     def __lt__(self, other):
         """Overload the < operator to compare products based on price."""
@@ -109,17 +121,20 @@ class Products:
             return self.price < other.price
         return NotImplemented
 
+
     def __gt__(self, other):
         """Overload the > operator to compare products based on price."""
         if isinstance(other, Products):
             return self.price > other.price
         return NotImplemented
 
+
     def __eq__(self, other):
         """Overload the == operator to compare products based on name and price."""
         if isinstance(other, Products):
             return self.name == other.name and self.price == other.price
         return NotImplemented
+
 
     def buy(self, quantity):
         """
@@ -164,12 +179,15 @@ class NonStockedProduct(Products):
     A class for non-stocked products (e.g., digital products like software licenses):
     These products always have a quantity of zero.
     """
+
     def __init__(self, name, price):
         super().__init__(name, price, 0)  # Quantity is always 0
     
+
     def set_quantity(self, quantity):
         """Non-stocked products cannot have a quantity other than 0."""
         raise ValueError("Non-stocked products cannot have a quantity.")
+    
     
     def __str__(self):
         """Return a string representation of the non-stocked product."""
@@ -182,16 +200,19 @@ class LimitedProduct(Products):
     """
     A class for products that have a limit on how many can be purchased in a single order.
     """
+
     def __init__(self, name, price, quantity, maximum):
         super().__init__(name, price, quantity)
         self.maximum = maximum  # Maximum allowed to purchase in a single order
     
+
     def buy(self, quantity):
         """Override the buy method to enforce a maximum purchase limit."""
         if quantity > self.maximum:
             raise ValueError(f"Cannot purchase more than {self.maximum} units of {self.name} in a single order.")
         return super().buy(quantity)
     
+
     def __str__(self):
         """Return a string representation of the limited product."""
         promo_info = f" (Promotion: {self.promotion.name})" if self.promotion else ""

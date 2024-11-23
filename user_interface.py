@@ -1,5 +1,6 @@
 from store_2 import Store
 
+
 def start(store):
     """
     Display the main menu for the store and handle user interaction.
@@ -62,6 +63,7 @@ def show_total_quantity(store):
     """
     total_quantity = store.get_total_quantity()
     print(f"\nTotal quantity of items in store: {total_quantity}")
+
 
 def make_order(store):
     """

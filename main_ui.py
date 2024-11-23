@@ -3,6 +3,7 @@ from store_2 import Store
 from user_interface import start
 from promotions import PercentDiscount, SecondHalfPricePromotion, ThirdOneFree
 
+
 def main():
     """
     Main function to initialize products, set up store inventory, test the magic methods,
@@ -70,3 +71,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
